@@ -1,4 +1,4 @@
-name: Build
+name: Main
 on:
   workflow_dispatch:
     inputs:
@@ -11,6 +11,6 @@ on:
 jobs:
   publish-package:
     name: publish main branch
-    uses: ./.github/workflows/build-reusable.yml
+    uses: ./.github/workflows/deployment.yml
     with:
       node_version: {{ inputs.node_version }}
