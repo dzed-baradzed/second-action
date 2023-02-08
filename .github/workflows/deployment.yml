@@ -1,12 +1,6 @@
 name: Test Project
 on: 
   workflow_call:
-    inputs:
-      node_version:
-        required: false
-        type: string
-        default: 16.14.0
-        description: e.g., 10.19.x
 jobs:
   test:
     runs-on: ubuntu-latest
