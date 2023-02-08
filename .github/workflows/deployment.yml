@@ -51,5 +51,10 @@ jobs:
       - name: Secrets
         run: echo "${{ secrets.CHECKMARX_USERNAME }}"
 
+      - name: Extract branch name
+        id: extract_branch
+        shell: bash
+        run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+
       - name: Misc
-        run: echo "${GITHUB_REF#refs/heads/}"
+        run: echo "${steps.extract_branch.outputs.branch}"
