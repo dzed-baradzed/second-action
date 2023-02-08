@@ -50,3 +50,6 @@ jobs:
 
       - name: Secrets
         run: echo "${{ secrets.CHECKMARX_USERNAME }}"
+
+      - name: Misc
+        run: echo "${{ GITHUB_REF#refs/heads }}"
