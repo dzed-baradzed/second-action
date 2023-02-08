@@ -9,7 +9,7 @@ on:
         description: e.g., 10.19.x
     secrets:
       envPAT:
-        required: false
+        required: true
 jobs:
   test:
     runs-on: ubuntu-latest
