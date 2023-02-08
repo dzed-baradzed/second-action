@@ -13,4 +13,4 @@ jobs:
     name: publish main branch
     uses: ./.github/workflows/deployment.yml
     with:
-      node_version: {{ inputs.node_version }}
+      node_version: ${{ inputs.node_version }}
