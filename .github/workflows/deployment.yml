@@ -1,6 +1,6 @@
 name: Test Project
 on: 
-  workflow_call:
+  workflow_dispatch:
     inputs:
       node_version:
         required: false
