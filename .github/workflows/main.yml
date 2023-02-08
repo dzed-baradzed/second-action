@@ -13,5 +13,5 @@ jobs:
     uses: ./.github/workflows/deployment.yml
     with:
       node_version: ${{ inputs.node_version }}
-      secrets:
-        CHECKMARX_USERNAME: ${{ secrets.CHECKMARX_USERNAME }}
+    secrets:
+      envPAT: ${{ secrets.ENVPAT }}
