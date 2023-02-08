@@ -1,0 +1,16 @@
+name: Build
+on:
+  worflow_dispatch:
+    inputs:
+      node_version:
+        required: false
+        type: string
+        default: 16.18.0
+        description: e.g., 10.19.x
+
+jobs:
+  publish-package:
+    name: publish main branch
+    uses: ./.github/workflows/build-reusable.yml
+    with:
+      node_version: {{ inputs.node_version }}
