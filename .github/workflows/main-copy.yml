@@ -1,0 +1,16 @@
+name: Main Triggers Copy
+on:
+  workflow_dispatch:
+    inputs:
+      node_version:
+        required: true
+        type: string
+        description: 'Node version'
+
+jobs:
+  publish-package:
+    name: publish main branch copy
+    uses: ./.github/workflows/deployment.yml
+    with:
+      node_version: ${{ inputs.node_version }}
+    secrets: inherit
