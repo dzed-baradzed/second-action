@@ -63,8 +63,8 @@ jobs:
         env:
           BRANCH: ${{ steps.extract_branch.outputs.branch } 
         run: |
-        if [ $BRANCH == 'master' ]; then
-          echo "This is master branch"
-        else
-          echo "This is not master branch"
-        fi
+          if [ $BRANCH -eq 'master' ]; then
+            echo "This is master branch"
+          else
+            echo "This is not master branch"
+          fi
