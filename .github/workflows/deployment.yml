@@ -61,7 +61,7 @@ jobs:
 
       - name: Test logic
         env:
-          BRANCH: ${{ steps.extract_branch.outputs.branch } 
+          BRANCH: ${{ steps.extract_branch.outputs.branch }}
         run: |
           if [ $BRANCH -eq 'master' ]; then
             echo "This is master branch"
