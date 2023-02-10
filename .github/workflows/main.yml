@@ -3,9 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       node_version:
-        required: true
-        type: string
-        description: 'Node version'
+        required: false
+        type: boolean
+        default: false
+        description: 'Skip tests'
 
 jobs:
   publish-package:
