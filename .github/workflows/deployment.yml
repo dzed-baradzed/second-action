@@ -25,6 +25,7 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
+    if: ${{ inputs.node_version != true }}
     needs: test
     runs-on: ubuntu-latest
     steps: 
@@ -46,6 +47,7 @@ jobs:
         run: echo "${{ toJSON(github) }}"
 
       - name: Input node version
+      
         run: echo "${{ inputs.node_version }}"
 
       - name: Secrets
