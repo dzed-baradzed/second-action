@@ -25,11 +25,11 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
-    if: ${{ inputs.node_version != true }}
     needs: test
     runs-on: ubuntu-latest
     steps: 
       - name: Get code
+        if: ${{ inputs.node_version != true }}
         uses: actions/checkout@v3
 
       - name: Install NodeJS
