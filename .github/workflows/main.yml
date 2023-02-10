@@ -2,7 +2,7 @@ name: Main Triggers
 on:
   workflow_dispatch:
     inputs:
-      node_version:
+      skip_tests:
         required: false
         type: boolean
         default: false
@@ -13,5 +13,5 @@ jobs:
     name: publish main branch
     uses: ./.github/workflows/deployment.yml
     with:
-      node_version: ${{ inputs.node_version }}
+      skip_tests: ${{ inputs.skip_tests }}
     secrets: inherit

@@ -2,16 +2,17 @@ name: Test Project
 on: 
   workflow_call:
     inputs:
-      node_version:
+      skip_tests:
         required: false
-        type: string
-        default: 16.14.0
-        description: e.g., 10.19.x
+        type: boolean
+        default: false
+        description: 'Skip Tests'
     secrets:
       CHECKMARX_USERNAME:
         required: true
 jobs:
   test:
+    if: input.skip_tests != true
     runs-on: ubuntu-latest
     steps: 
       - name: Get code
@@ -29,7 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Get code
-        if: inputs.node_version != 'true'
         uses: actions/checkout@v3
 
       - name: Install NodeJS
@@ -47,7 +47,6 @@ jobs:
         run: echo "${{ toJSON(github) }}"
 
       - name: Input node version
-      
         run: echo "${{ inputs.node_version }}"
 
       - name: Secrets
