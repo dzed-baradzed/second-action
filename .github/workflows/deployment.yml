@@ -57,4 +57,14 @@ jobs:
         run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
 
       - name: Misc
-        run: echo $BRANCH
+        run: echo "${{ steps.extract_branch.outputs.branch }}"
+
+      - name: Test logic
+        env:
+          BRANCH: ${{ steps.extract_branch.outputs.branch } 
+        run: |
+        if [ $BRANCH == 'master' ]; then
+          echo "This is master branch"
+        else
+          echo "This is not master branch"
+        fi
