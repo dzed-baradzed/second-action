@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Get code
-        if: inputs.node_version != true
+        if: inputs.node_version != 'true'
         uses: actions/checkout@v3
 
       - name: Install NodeJS
