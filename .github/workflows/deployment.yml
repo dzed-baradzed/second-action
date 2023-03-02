@@ -77,10 +77,10 @@ jobs:
         run: exit 1
       
       - name: Run this if fail
-        if: steps.fail-step.outcume == 'failure'
+        if: steps.fail-step.outcome == 'failure'
         run: |
           echo "Hey, prev step failed"
 
       - name: Will this run if fail prev step?
         run: |
-          echo "Will this run?"
+          echo "${{ steps.fail-step.outcome }}"
