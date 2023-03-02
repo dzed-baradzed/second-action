@@ -14,4 +14,4 @@ jobs:
     uses: ./.github/workflows/deployment.yml
     with:
       skip_tests: ${{ inputs.skip_tests }}
-    secrets: inherit
+    secrets: inherit #test

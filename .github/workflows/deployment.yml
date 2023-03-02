@@ -70,3 +70,10 @@ jobs:
           else
             echo "This is not master branch"
           fi
+      
+      - name: Fail
+        run: exit 1
+      
+      - name: Run this if fail
+        run: |
+          echo "Hey, prev step failed"
