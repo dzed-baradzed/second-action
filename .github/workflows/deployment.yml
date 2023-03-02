@@ -78,3 +78,7 @@ jobs:
         if: ${{ failure() }}
         run: |
           echo "Hey, prev step failed"
+
+      - name: Will this run if fail prev step?
+        run: |
+          echo "Will this run?"
