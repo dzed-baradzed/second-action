@@ -72,11 +72,12 @@ jobs:
           fi
       
       - name: Fail
+        id: fail-step
         continue-on-error: true
         run: exit 1
       
       - name: Run this if fail
-        if: ${{ failure() }}
+        if: steps.fail-step.outcume == 'failure'
         run: |
           echo "Hey, prev step failed"
 
