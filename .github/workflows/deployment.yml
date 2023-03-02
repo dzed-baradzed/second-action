@@ -72,6 +72,7 @@ jobs:
           fi
       
       - name: Fail
+        continue-on-error: true
         run: exit 1
       
       - name: Run this if fail
