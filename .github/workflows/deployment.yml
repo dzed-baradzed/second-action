@@ -85,7 +85,7 @@ jobs:
         run: |
           echo "${{ steps.fail-step.outcome }}"
       
-      - name: Will this run if fail prev step?
+      - name: Will this run if fail prev step??
         run: |
           chmod +x ./test.sh
           bash ./test.sh
