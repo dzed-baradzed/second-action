@@ -66,7 +66,7 @@ jobs:
         with:
           path: ./
       
-      - name: Create tag
+      - name: Create tag yes
         working-directory: ./ 
         run: |
           git config user.name github-actions
