@@ -69,8 +69,8 @@ jobs:
       - name: Create tag
         working-directory: ./ 
         run: |
-          git tag v${steps.get-package-info.outputs.version}
-          git push origin v${steps.get-package-info.outputs.version}
+          git tag v${{steps.get-package-info.outputs.version}}
+          git push origin v${{steps.get-package-info.outputs.version}}
           npm version minor -m "Bump to version %s"
           git push
           git tag
