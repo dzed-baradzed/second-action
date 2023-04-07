@@ -70,7 +70,7 @@ jobs:
         working-directory: ./ 
         run: |
           git config user.name github-actions
-          git config.email "github-actions@github-actions.com"
+          git config user.email "github-actions@github-actions.com"
           git tag v${{steps.get-package-info.outputs.version}}
           git push origin v${{steps.get-package-info.outputs.version}}
           npm version minor -m "Bump to version %s"
