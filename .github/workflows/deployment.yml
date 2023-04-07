@@ -60,33 +60,29 @@ jobs:
       - name: Misc
         run: echo "${{ steps.extract_branch.outputs.branch }}"
 
-      - name: Test logic
-        env:
-          BRANCH: ${{ steps.extract_branch.outputs.branch }}
-        run: |
-          echo $BRANCH
-          if [ $BRANCH == 'master' ]; then
-            echo "This is master branch"
-          else
-            echo "This is not master branch"
-          fi
+      - name: Get package info
+        id: get-package-info
+        uses: codex-team/action-nodejs-package-info@v1.1
+        with:
+          path: ./
       
-      - name: Fail
-        id: fail-step
-        continue-on-error: true
-        run: exit 1
-      
-      - name: Run this if fail
-        if: steps.fail-step.outcome == 'failure'
+      - name: Create tag
+        working-directory: ./ 
         run: |
-          echo "Hey, prev step failed"
+          git tag v${steps.get-package-info.outputs.version}
+          git push origin v${steps.get-package-info.outputs.version}
+          npm version minor -m "Bump to version %s"
+          git push
+          git tag
 
-      - name: Will this run if fail prev step?
-        run: |
-          echo "${{ steps.fail-step.outcome }}"
+      # - name: Test logic
+      #   env:
+      #     BRANCH: ${{ steps.extract_branch.outputs.branch }}
+      #   run: |
+      #     echo $BRANCH
+      #     if [ $BRANCH == 'master' ]; then
+      #       echo "This is master branch"
+      #     else
+      #       echo "This is not master branch"
+      #     fi
       
-      - name: Will this run if fail prev step??
-        run: |
-          chmod +x ./test.sh
-          bash ./test.sh
-        shell: bash
